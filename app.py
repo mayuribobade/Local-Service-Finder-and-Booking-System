@@ -1,3 +1,4 @@
+import os
 from functools import wraps
 from datetime import date
 from flask import Flask, flash, redirect, render_template, request, session, url_for
@@ -5,7 +6,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from database.db import create_tables, get_db_connection, seed_data
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "replace-with-a-secure-secret-in-production"
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-only-change-me")
 app.jinja_env.globals["today"] = date.today().isoformat()
 create_tables()
 seed_data()
