@@ -1,24 +1,59 @@
-# Local Service Finder
+# Local Service Finder and Booking System
 
-A complete Flask and SQLite web application for customers, local service providers, and administrators.
+A web-based Local Service Finder and Booking System developed using Python, Flask, HTML, CSS, and SQLite. It helps customers find local service providers, explore available services, and book services through a simple and user-friendly platform.
 
-## Run locally
+## Features
 
-1. Install dependencies: `pip install -r requirements.txt`
-2. Start: `python app.py`
-3. Open `http://127.0.0.1:5000`.
+- **Customer Module:** Search for service providers, view provider details, book services, track bookings, and submit reviews.
+- **Provider Module:** Manage service profiles, view booking requests, update booking status, and view customer reviews.
+- **Admin Module:** Manage users, service categories, bookings, and dashboard activity.
+- **Database:** SQLite database for storing application data.
 
-## Demo accounts
+## Technologies Used
+
+- Python
+- Flask
+- HTML
+- CSS
+- SQLite
+
+## How to Run Locally
+
+1. Install Python on your system.
+2. Install the required dependencies:
+
+   `pip install -r requirements.txt`
+
+3. Run the application:
+
+   `python app.py`
+
+4. Open the following URL in your browser:
+
+   `http://127.0.0.1:5000`
+
+## Demo Accounts
 
 | Role | Email | Password |
 |---|---|---|
 | Administrator | admin@localfinder.com | admin123 |
-| Demo provider | rahul.demo@example.com | demo123 |
+| Demo Provider | rahul.demo@example.com | demo123 |
 
-Customers and providers can also register in the application. SQLite tables and demo providers are created automatically.
+Customers and providers can also register through the application.
 
-## Included modules
+## Project Structure
 
-- Customer search, provider details, bookings, tracking and reviews
-- Provider service profiles, requests, status updates and review viewing
-- Admin users, categories, bookings and dashboard activity
+- `app.py` — Main Flask application
+- `database/` — Database-related code
+- `static/` — CSS and static files
+- `templates/` — HTML templates for customers, providers, and administrators
+- `requirements.txt` — Required Python packages
+- `.gitignore` — Files excluded from Git tracking
+
+## Future Enhancements
+
+- Online payment integration
+- Email and SMS notifications
+- Advanced search and filtering
+- Improved booking and provider management
+
