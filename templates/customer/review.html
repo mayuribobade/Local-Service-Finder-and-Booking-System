@@ -1,0 +1,9 @@
+{% extends 'base.html' %}{% block content %}<section class="auth">
+    <form class="form" method="post">
+        <p class="eyebrow">SERVICE COMPLETE</p>
+        <h1>Leave a review</h1><label>Rating<select name="rating">{% for n in range(5,0,-1) %}<option value="{{ n }}">{{
+                    n }} star{{ 's' if n>1 }}</option>{% endfor %}</select></label><label>Your feedback<textarea
+                name="comment" placeholder="Tell us about your experience"></textarea></label><button
+            class="button">Submit review</button>
+    </form>
+</section>{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}{% block content %}<section class="auth">
+    <form class="form" method="post">
+        <p class="eyebrow">GET STARTED</p>
+        <h1>Create your account</h1><label>Full name<input name="name" required></label><label>Email<input type="email"
+                name="email" required></label><label>Phone (optional)<input name="phone"></label><label>Password<input
+                type="password" name="password" minlength="6" required></label><label>I am a<select name="role"
+                required>
+                <option value="customer">Customer</option>
+                <option value="provider">Service provider</option>
+            </select></label><button class="button" type="submit">Create account</button>
+        <p>Already registered? <a href="{{ url_for('login') }}">Log in</a></p>
+    </form>
+</section>{% endblock %}

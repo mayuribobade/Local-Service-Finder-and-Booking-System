@@ -1,0 +1,20 @@
+{% extends 'base.html' %}{% block content %}<section class="two-col">
+    <form class="form" method="post">
+        <p class="eyebrow">SERVICE PROFILE</p>
+        <h1>Add a service</h1><label>Service<select name="service">{% for c in categories %}<option>{{ c.name }}
+                </option>{% endfor %}</select></label><label>Experience<input name="experience"
+                placeholder="e.g. 5 years" required></label><label>Location<input name="location"
+                required></label><label>Charges<input name="charges" placeholder="e.g. ₹300 onwards"
+                required></label><label>About your service<textarea name="description"
+                required></textarea></label><button class="button">Add profile</button>
+    </form>
+    <section>
+        <p class="eyebrow">YOUR LISTINGS</p>
+        <h2>Service profiles</h2>{% for s in services %}<article class="card slim">
+            <h3>{{ s.service }}</h3>
+            <p>{{ s.location }} · {{ s.experience }} · {{ s.charges }}</p>
+            <form method="post" action="{{ url_for('delete_service',service_id=s.id) }}"><button class="text-button"
+                    onclick="return confirm('Remove this service profile?')">Remove</button></form>
+        </article>{% else %}<p>No services added yet.</p>{% endfor %}
+    </section>
+</section>{% endblock %}

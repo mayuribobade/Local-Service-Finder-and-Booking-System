@@ -1,0 +1,31 @@
+{% extends 'base.html' %}{% block content %}<section class="page-head">
+    <p class="eyebrow">BOOKING REQUESTS</p>
+    <h1>Customer requests</h1>
+</section>
+<div class="table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Service / date</th>
+                <th>Address & request</th>
+                <th>Status</th>
+                <th>Update</th>
+            </tr>
+        </thead>
+        <tbody>{% for b in bookings %}<tr>
+                <td>{{ b.customer_name }}<br><small>{{ b.customer_phone or '' }}</small></td>
+                <td>{{ b.service }}<br>{{ b.service_date }} · {{ b.preferred_time }}</td>
+                <td>{{ b.address }}<br><small>{{ b.description }}</small></td>
+                <td><span class="status {{ b.status|lower|replace(' ','-') }}">{{ b.status }}</span></td>
+                <td>
+                    <form method="post" action="{{ url_for('update_booking_status',booking_id=b.id) }}"><select
+                            name="status">{% for s in ['Accepted','Rejected','In Progress','Completed'] %}<option {% if
+                                b.status==s %}selected{% endif %}>{{ s }}</option>{% endfor %}</select><button
+                            class="text-button">Save</button></form>
+                </td>
+            </tr>{% else %}<tr>
+                <td colspan="5">No booking requests yet.</td>
+            </tr>{% endfor %}</tbody>
+    </table>
+</div>{% endblock %}

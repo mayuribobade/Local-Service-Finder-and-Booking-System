@@ -1,0 +1,24 @@
+{% extends 'base.html' %}{% block content %}<section class="page-head">
+    <p class="eyebrow">FIND PROVIDERS</p>
+    <h1>Professionals ready to help.</h1>
+    <form class="filter" method="get"><select name="category">
+            <option value="">All services</option>{% for c in categories %}<option {% if selected_category==c.name
+                %}selected{% endif %}>{{ c.name }}</option>{% endfor %}
+        </select><input name="location" value="{{ location }}" placeholder="Area or location"><button class="button"
+            type="submit">Search</button></form>
+</section>
+<div class="grid providers">{% for p in providers %}<article class="card">
+        <div class="rating">★ {{ p.rating }}</div>
+        <h3>{{ p.name }}</h3>
+        <p class="tag">{{ p.service }}</p>
+        <p>{{ p.description }}</p>
+        <dl>
+            <dt>Experience</dt>
+            <dd>{{ p.experience }}</dd>
+            <dt>Location</dt>
+            <dd>{{ p.location }}</dd>
+            <dt>Charges</dt>
+            <dd>{{ p.charges }}</dd>
+        </dl><a class="button outline" href="{{ url_for('provider_details',provider_id=p.id) }}">View profile</a>
+    </article>{% else %}<p>No providers matched your search. Try another service or location.</p>{% endfor %}</div>{%
+endblock %}

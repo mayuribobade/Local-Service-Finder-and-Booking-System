@@ -1,0 +1,11 @@
+{% extends 'base.html' %}{% block content %}<section class="auth">
+    <form class="form" method="post">
+        <p class="eyebrow">BOOK {{ provider.service|upper }}</p>
+        <h1>{{ provider.name }}</h1>
+        <p>{{ provider.location }} · {{ provider.charges }}</p><label>Service date<input type="date" name="service_date"
+                required></label><label>Preferred time<input type="time" name="preferred_time"
+                required></label><label>Service address<textarea name="address"
+                required></textarea></label><label>Describe the problem / service<textarea name="description"
+                required></textarea></label><button class="button">Send booking request</button>
+    </form>
+</section>{% endblock %}

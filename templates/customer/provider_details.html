@@ -1,0 +1,28 @@
+{% extends 'base.html' %}{% block content %}<section class="page-head">
+    <p class="eyebrow">{{ provider.service|upper }}</p>
+    <h1>{{ provider.name }}</h1>
+    <p>{{ provider.description }}</p>
+</section>
+<div class="detail">
+    <article class="card">
+        <div class="rating large">★ {{ provider.rating }}</div>
+        <dl>
+            <dt>Experience</dt>
+            <dd>{{ provider.experience }}</dd>
+            <dt>Location</dt>
+            <dd>{{ provider.location }}</dd>
+            <dt>Starting charges</dt>
+            <dd>{{ provider.charges }}</dd>
+            <dt>Contact</dt>
+            <dd>{{ provider.phone or 'Available after booking' }}</dd>
+        </dl>{% if current_user.role=='customer' %}<a class="button"
+            href="{{ url_for('book',provider_id=provider.id) }}">Book this provider</a>{% elif not current_user.id %}<a
+            class="button" href="{{ url_for('login') }}">Log in to book</a>{% endif %}
+    </article>
+    <section>
+        <h2>Customer reviews</h2>{% for r in reviews %}<article class="review"><b>{{ r.name }}</b> <span>★ {{ r.rating
+                }}/5</span>
+            <p>{{ r.comment }}</p>
+        </article>{% else %}<p>No reviews yet.</p>{% endfor %}
+    </section>
+</div>{% endblock %}

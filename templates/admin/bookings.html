@@ -1,0 +1,24 @@
+{% extends 'base.html' %}{% block content %}<section class="page-head">
+    <p class="eyebrow">ADMINISTRATION</p>
+    <h1>All bookings</h1>
+</section>
+<div class="table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Provider</th>
+                <th>Service / time</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>{% for b in bookings %}<tr>
+                <td>{{ b.customer_name }}</td>
+                <td>{{ b.provider_name }}</td>
+                <td>{{ b.service }}<br>{{ b.service_date }} · {{ b.preferred_time }}</td>
+                <td><span class="status {{ b.status|lower|replace(' ','-') }}">{{ b.status }}</span></td>
+            </tr>{% else %}<tr>
+                <td colspan="4">No bookings recorded.</td>
+            </tr>{% endfor %}</tbody>
+    </table>
+</div>{% endblock %}

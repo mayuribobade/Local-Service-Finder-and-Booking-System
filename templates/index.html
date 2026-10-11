@@ -1,0 +1,19 @@
+{% extends 'base.html' %}{% block content %}<section class="hero">
+    <div>
+        <p class="eyebrow">LOCAL SERVICES, SIMPLIFIED</p>
+        <h1>The right local expert,<br><em>right when you need one.</em></h1>
+        <p>Search trusted providers, compare their experience and prices, and book in minutes.</p><a class="button"
+            href="{{ url_for('providers') }}">Find a service</a>
+    </div>
+    <div class="hero-card"><b>Popular near you</b>{% for c in categories[:4] %}<a
+            href="{{ url_for('providers',category=c.name) }}">{{ c.name }} <span>→</span></a>{% endfor %}</div>
+</section>
+<section class="section">
+    <p class="eyebrow">BROWSE BY NEED</p>
+    <h2>Everyday help, all in one place.</h2>
+    <div class="grid">{% for c in categories %}<a class="card category"
+            href="{{ url_for('providers',category=c.name) }}">
+            <h3>{{ c.name }}</h3>
+            <p>{{ c.description }}</p><b>Explore →</b>
+        </a>{% endfor %}</div>
+</section>{% endblock %}

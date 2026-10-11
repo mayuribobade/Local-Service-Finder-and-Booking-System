@@ -1,0 +1,28 @@
+{% extends 'base.html' %}{% block content %}<section class="page-head">
+    <p class="eyebrow">ADMINISTRATION</p>
+    <h1>Registered accounts</h1>
+</section>
+<div class="table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Phone</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>{% for u in users %}<tr>
+                <td>{{ u.name }}</td>
+                <td>{{ u.email }}</td>
+                <td>{{ u.role|title }}</td>
+                <td>{{ u.phone or '—' }}</td>
+                <td>
+                    <form method="post" action="{{ url_for('admin_delete_user',user_id=u.id) }}"><button
+                            class="text-button danger"
+                            onclick="return confirm('Remove this account and its records?')">Remove</button></form>
+                </td>
+            </tr>{% endfor %}</tbody>
+    </table>
+</div>{% endblock %}

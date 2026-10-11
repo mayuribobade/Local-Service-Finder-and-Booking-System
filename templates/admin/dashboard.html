@@ -1,0 +1,16 @@
+{% extends 'base.html' %}{% block content %}<section class="page-head">
+    <p class="eyebrow">ADMIN CONSOLE</p>
+    <h1>System overview</h1>
+</section>
+<div class="stats">{% for label,value in stats.items() %}<div><b>{{ value }}</b><span>{{ label|title }}</span></div>{%
+    endfor %}</div>
+<div class="grid"><a class="card" href="{{ url_for('admin_users') }}">
+        <h3>Users & providers</h3>
+        <p>View and remove registered accounts.</p>
+    </a><a class="card" href="{{ url_for('admin_categories') }}">
+        <h3>Service categories</h3>
+        <p>Add categories or hide them from customers.</p>
+    </a><a class="card" href="{{ url_for('admin_bookings') }}">
+        <h3>All bookings</h3>
+        <p>Monitor booking activity across the platform.</p>
+    </a></div>{% endblock %}

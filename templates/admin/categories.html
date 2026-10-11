@@ -1,0 +1,16 @@
+{% extends 'base.html' %}{% block content %}<section class="two-col">
+    <form class="form" method="post">
+        <p class="eyebrow">ADMINISTRATION</p>
+        <h1>Add category</h1><label>Name<input name="name" required></label><label>Description<textarea
+                name="description"></textarea></label><button class="button">Add category</button>
+    </form>
+    <section>
+        <p class="eyebrow">SERVICE DIRECTORY</p>
+        <h2>Categories</h2>{% for c in categories %}<article class="card slim">
+            <h3>{{ c.name }} {% if not c.active %}<small>(hidden)</small>{% endif %}</h3>
+            <p>{{ c.description }}</p>
+            <form method="post" action="{{ url_for('toggle_category',category_id=c.id) }}"><button
+                    class="text-button">{{ 'Hide' if c.active else 'Make active' }}</button></form>
+        </article>{% endfor %}
+    </section>
+</section>{% endblock %}

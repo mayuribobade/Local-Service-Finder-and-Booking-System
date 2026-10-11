@@ -1,0 +1,8 @@
+{% extends 'base.html' %}{% block content %}<section class="page-head">
+    <p class="eyebrow">SERVICE DIRECTORY</p>
+    <h1>What do you need help with?</h1>
+</section>
+<div class="grid">{% for c in categories %}<a class="card category" href="{{ url_for('providers',category=c.name) }}">
+        <h3>{{ c.name }}</h3>
+        <p>{{ c.description }}</p><b>See providers →</b>
+    </a>{% endfor %}</div>{% endblock %}

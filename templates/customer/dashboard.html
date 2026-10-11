@@ -1,0 +1,14 @@
+{% extends 'base.html' %}{% block content %}<section class="page-head">
+    <p class="eyebrow">CUSTOMER DASHBOARD</p>
+    <h1>Hello, {{ current_user.name }}.</h1>
+    <p>Find trusted help and keep an eye on your requests.</p>
+</section>
+<div class="stats">{% for c in counts %}<div><b>{{ c.total }}</b><span>{{ c.status }}</span></div>{% else %}<div>
+        <b>0</b><span>Bookings yet</span></div>{% endfor %}</div>
+<div class="grid"><a class="card" href="{{ url_for('providers') }}">
+        <h3>Find a service</h3>
+        <p>Compare nearby providers and their prices.</p>
+    </a><a class="card" href="{{ url_for('customer_bookings') }}">
+        <h3>My bookings</h3>
+        <p>Track requests and leave a review after service.</p>
+    </a></div>{% endblock %}

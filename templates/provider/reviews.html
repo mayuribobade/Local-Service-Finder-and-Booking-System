@@ -1,0 +1,7 @@
+{% extends 'base.html' %}{% block content %}<section class="page-head">
+    <p class="eyebrow">CUSTOMER FEEDBACK</p>
+    <h1>Your reviews</h1>
+</section>{% for r in reviews %}<article class="review"><b>{{ r.customer_name }}</b> · {{ r.service }} <span>★ {{
+        r.rating }}/5</span>
+    <p>{{ r.comment }}</p>
+</article>{% else %}<p>No reviews received yet.</p>{% endfor %}{% endblock %}

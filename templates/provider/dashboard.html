@@ -1,0 +1,19 @@
+{% extends 'base.html' %}{% block content %}<section class="page-head">
+    <p class="eyebrow">PROVIDER DASHBOARD</p>
+    <h1>Welcome, {{ current_user.name }}.</h1>
+    <p>You have <b>{{ pending }}</b> pending booking request{{ 's' if pending!=1 }}.</p>
+</section>
+<div class="grid"><a class="card" href="{{ url_for('manage_services') }}">
+        <h3>Manage services</h3>
+        <p>Add your service, location, experience and charges.</p>
+    </a><a class="card" href="{{ url_for('provider_bookings') }}">
+        <h3>Booking requests</h3>
+        <p>Accept, reject, or update customer bookings.</p>
+    </a><a class="card" href="{{ url_for('provider_reviews') }}">
+        <h3>Customer reviews</h3>
+        <p>See feedback on your completed work.</p>
+    </a></div>
+<section class="section compact">
+    <h2>Your service profiles</h2>{% for p in profiles %}<p class="line"><b>{{ p.service }}</b> · {{ p.location }} · {{
+        p.charges }}</p>{% else %}<p>Add your first service profile so customers can find you.</p>{% endfor %}
+</section>{% endblock %}
